@@ -15,5 +15,19 @@
 
 
 export function smallest_subarray_with_given_sum(arr: number[], s: number){
+    let shortest = Infinity;
+    let sum = 0;
+    let windowstart = 0;
+
+    for(let windowend = 0; windowend < arr.length; windowend++){
+      sum += arr[windowend];
+      while(sum >= s){
+        shortest = Math.min(shortest, windowend - windowstart +1);
+        sum -= arr[windowstart];
+        windowstart++;
+      }
+    }
+
+  return shortest;
     
 }
